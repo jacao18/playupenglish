@@ -1,494 +1,171 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PlayUp English — Materiais de Inglês para Crianças</title>
-  <meta name="description" content="Materiais de inglês divertidos e pedagógicos para crianças. Flashcards, jogos, atividades e planos de aula com a identidade PlayUp English." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      /* Paleta PlayUp — aproximada a partir do logo */
-      --blue-900: #22478C;   /* Base/cabeçalho/rodapé/títulos */
-      --blue-600: #2B589C;   /* Hover/linhas */
-      --sky-400:  #62B8E5;   /* Fundos suaves/ilustrações */
-      --pink-500: #FF60AB;   /* CTA primário/destaques interativos */
-      --purple-500: #9C56F3; /* CTA secundário/ícones/links */
-      --gold-400: #FFC72C;   /* Destaques/badges/atenção */
-      --red-500:  #E32B3B;   /* Erros/alertas (uso moderado) */
-      --green-500:#4CAF50;   /* Sucesso (uso moderado) */
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PlayUp English</title>
+  <meta name="description" content="Materiais de inglês divertidos e profissionais para crianças: flashcards, jogos, músicas e atividades. Perfeito para pais e professores.">
+  <meta name="theme-color" content="#1F3E7D">
 
-      /* Neutros e texto */
-      --white:    #FFFFFF;
-      --black:    #0B1220;
-      --text-900: #1F2937;
-      --text-700: #374151;
-      --text-600: #4B5563;
-      --bg-50:    #F9FAFB;
-      --bg-100:   #F3F4F6;
+  <!-- Fontes (opcionais, mas combinam com o estilo do logo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- M PLUS Rounded 1c e Poppins para títulos e textos -->
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;600;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-      /* Sombras e efeitos */
-      --shadow-1: 0 2px 10px rgba(0,0,0,0.06);
-      --shadow-2: 0 10px 30px rgba(34,71,140,0.18);
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="style.css">
 
-      /* Raio e espaçamentos */
-      --radius-sm: 10px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
-
-      /* Tamanhos de fonte */
-      --font-title: "Outfit", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      --font-body:  "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-
-    /* Reset básico + tipografia */
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: var(--font-body);
-      color: var(--text-900);
-      background: var(--white);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: var(--purple-500); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* Utilidades de cor (por seções) */
-    .bg-brand-dark { background: var(--blue-900); color: var(--white); }
-    .bg-hero-gradient {
-      background: linear-gradient(135deg, var(--blue-900) 0%, var(--sky-400) 100%);
-      color: var(--white);
-    }
-    .text-brand { color: var(--blue-900); }
-    .text-invert { color: var(--white); }
-
-    /* Barra de navegação */
-    .navbar {
-      position: sticky; top: 0; z-index: 50;
-      background: var(--blue-900);
-      color: var(--white);
-      box-shadow: var(--shadow-1);
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 14px 20px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px;
-    }
-    .brand {
-      display: flex; align-items: center; gap: 12px;
-    }
-    .brand img.logo {
-      width: 48px; height: 48px; object-fit: contain;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-    }
-    .brand .name {
-      font-family: var(--font-title);
-      font-weight: 800; font-size: 22px; letter-spacing: 0.2px;
-    }
-    .nav-links {
-      display: flex; gap: 18px; align-items: center;
-    }
-    .nav-links a {
-      color: var(--white);
-      font-weight: 600;
-      padding: 8px 10px; border-radius: 10px;
-    }
-    .nav-links a:hover {
-      background: rgba(255,255,255,0.12);
-      text-decoration: none;
-    }
-
-    /* Botões */
-    .btn {
-      appearance: none; border: 0; cursor: pointer;
-      padding: 12px 18px; border-radius: var(--radius-md);
-      font-weight: 800; letter-spacing: 0.2px;
-      transition: transform .06s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
-      box-shadow: var(--shadow-1);
-    }
-    .btn:active { transform: translateY(1px); }
-    .btn-primary {
-      background: var(--pink-500); color: var(--white);
-    }
-    .btn-primary:hover { box-shadow: var(--shadow-2); }
-    .btn-secondary {
-      background: var(--purple-500); color: var(--white);
-    }
-    .btn-accent {
-      background: var(--gold-400); color: var(--blue-900);
-    }
-    .btn-link {
-      background: transparent; color: var(--white);
-      border: 2px solid rgba(255,255,255,0.6);
-    }
-    .btn-link:hover { background: rgba(255,255,255,0.12); }
-
-    /* Acessibilidade de foco */
-    :focus-visible {
-      outline: 3px solid var(--pink-500);
-      outline-offset: 2px;
-      border-radius: 6px;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 56px 20px 32px;
-    }
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: center;
-    }
-    .hero h1 {
-      font-family: var(--font-title);
-      font-size: clamp(34px, 4vw, 52px);
-      line-height: 1.1; margin: 0 0 16px;
-      letter-spacing: 0.3px;
-      text-shadow: 0 3px 12px rgba(0,0,0,0.18);
-    }
-    .hero p {
-      font-size: 18px; max-width: 56ch; margin: 0 0 22px;
-      color: rgba(255,255,255,0.92);
-    }
-    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
-    .hero-bubbles {
-      position: relative; height: 100%;
-    }
-    .hero-card {
-      background: var(--white); color: var(--text-900);
-      border-radius: var(--radius-lg);
-      padding: 16px; width: 100%;
-      box-shadow: var(--shadow-2);
-      transform: rotate(-2deg);
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--gold-400); color: var(--blue-900);
-      font-weight: 800; padding: 8px 12px; border-radius: 999px;
-      box-shadow: var(--shadow-1);
-    }
-
-    /* Seções */
-    section { padding: 64px 20px; }
-    .container { max-width: 1200px; margin: 0 auto; }
-
-    .section-title {
-      font-family: var(--font-title);
-      font-weight: 800; letter-spacing: 0.2px;
-      font-size: clamp(26px, 3vw, 38px);
-      margin: 0 0 8px; color: var(--blue-900);
-    }
-    .section-sub {
-      color: var(--text-600); margin: 0 0 28px;
-    }
-
-    /* Grade de cards */
-    .grid {
-      display: grid; gap: 22px;
-      grid-template-columns: repeat(12, 1fr);
-    }
-    .col-4 { grid-column: span 4; }
-    .col-6 { grid-column: span 6; }
-    .col-12 { grid-column: span 12; }
-
-    @media (max-width: 960px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .col-4 { grid-column: span 6; }
-      .col-6 { grid-column: span 12; }
-    }
-    @media (max-width: 640px) {
-      .col-4, .col-6 { grid-column: span 12; }
-    }
-
-    .card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-1);
-      overflow: hidden;
-      display: flex; flex-direction: column;
-      border: 3px solid transparent;
-    }
-    .card:hover {
-      border-color: rgba(156,86,243,0.3); /* roxo sutil */
-      transform: translateY(-1px);
-      transition: transform .06s ease, border-color .2s ease;
-    }
-    .card-media { aspect-ratio: 16/10; background: var(--bg-100); }
-    .card-body { padding: 16px; display: grid; gap: 10px; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--sky-400); color: var(--blue-900);
-      font-weight: 800; padding: 6px 10px; border-radius: 999px;
-    }
-    .badge.gold {
-      background: var(--gold-400); color: var(--blue-900);
-    }
-    .card h3 {
-      margin: 0; font-size: 20px; color: var(--blue-900); font-weight: 800;
-      font-family: var(--font-title);
-    }
-    .card p { margin: 0; color: var(--text-700); }
-    .card-actions {
-      display: flex; gap: 10px; padding: 0 16px 16px; margin-top: auto;
-    }
-
-    /* Destaques coloridos (seção Como Funciona) */
-    .feature {
-      background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(98,184,229,0.15) 100%);
-      border: 2px dashed rgba(34,71,140,0.25);
-      border-radius: var(--radius-lg);
-      padding: 18px; display: grid; gap: 8px;
-    }
-    .feature .icon {
-      width: 42px; height: 42px; border-radius: 12px;
-      background: var(--purple-500); color: var(--white);
-      display: inline-grid; place-items: center;
-      box-shadow: var(--shadow-1);
-      font-weight: 800;
-    }
-
-    /* Depoimentos */
-    .quote {
-      background: var(--white); border-radius: var(--radius-lg);
-      padding: 18px; box-shadow: var(--shadow-1);
-      border-left: 6px solid var(--gold-400);
-    }
-    .stars { color: var(--gold-400); font-size: 18px; letter-spacing: 2px; }
-
-    /* Newsletter */
-    .newsletter {
-      background: linear-gradient(135deg, var(--purple-500), var(--blue-900));
-      color: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      box-shadow: var(--shadow-2);
-    }
-    .newsletter form {
-      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px;
-    }
-    .input {
-      flex: 1 1 260px;
-      border: 2px solid rgba(255,255,255,0.5);
-      background: rgba(255,255,255,0.08);
-      border-radius: var(--radius-md);
-      padding: 12px 14px; color: var(--white);
-    }
-    .input::placeholder { color: rgba(255,255,255,0.9); }
-
-    /* Rodapé */
-    footer {
-      background: var(--blue-900); color: var(--white);
-      padding: 36px 20px;
-    }
-    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; gap: 18px; }
-    .mini { color: rgba(255,255,255,0.85); font-size: 14px; }
-
-    /* Pequenas melhorias de espaçamento */
-    .mt-8 { margin-top: 8px; } .mt-12 { margin-top: 12px; } .mt-16 { margin-top: 16px; }
-    .mt-24 { margin-top: 24px; } .mt-32 { margin-top: 32px; } .mt-40 { margin-top: 40px; }
-  </style>
+  <!-- Favicons (gere a partir do logo quando puder) -->
+  <!--
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  -->
 </head>
 <body>
+  <header class="site-header" id="inicio">
+    <div class="container header-inner">
+      <a href="#inicio" class="logo-link" aria-label="Ir para o início">
+        <!-- Opção recomendada: arquivo local 
+        <img src="assets/images/logo.png" alt="Logo PlayUp English" class="site-logo"> -->
+        <!-- Opção alternativa (remota): -->
+        <img src="https://raw.githubusercontent.com/jacao18/playupenglish/main/logo.png" alt="Logo PlayUp English" class="site-logo"> 
+        
+      </a>
 
-  <!-- NAV -->
-  <nav class="navbar" aria-label="Barra de navegação principal">
-    <div class="nav-inner">
-      <div class="brand">
-        <img class="logo" src="assets/logo-playup.png" alt="Logo PlayUp English" />
-        <div class="name" aria-label="PlayUp English">PlayUp English</div>
-      </div>
-      <div class="nav-links" role="navigation">
-        <a href="#materiais">Materiais</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#contato">Contato</a>
-        <button class="btn btn-accent">Entrar</button>
-      </div>
-    </div>
-  </nav>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
 
-  <!-- HERO -->
-  <header class="hero bg-hero-gradient">
-    <div class="hero-inner">
-      <div>
-        <span class="hero-badge">Novidade ✨ Materiais prontos para imprimir</span>
-        <h1>Inglês divertido e eficaz para crianças</h1>
-        <p>Atividades lúdicas, flashcards, jogos e planos de aula alinhados com o desenvolvimento infantil — tudo com a energia da PlayUp English.</p>
-        <div class="hero-cta">
-          <a href="#materiais" class="btn btn-primary">Explorar Materiais</a>
-          <a href="#contato" class="btn btn-link">Falar com a equipe</a>
-        </div>
-      </div>
-      <div class="hero-bubbles" aria-hidden="true">
-        <div class="hero-card">
-          <img src="assets/hero-kids.png" alt="Crianças aprendendo inglês com materiais PlayUp" />
-          <div class="mt-12" style="display:flex; gap:10px; align-items:center;">
-            <span class="badge gold">⭐ 4.9</span>
-            <span class="text-brand" style="font-weight:800;">+2.000 educadores usam</span>
-          </div>
-        </div>
-      </div>
+      <nav id="site-nav" class="site-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#materiais">Materiais</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+          <li><a href="#comunidade">Comunidade</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- MATERIAIS -->
-  <section id="materiais" aria-labelledby="materiais-title">
-    <div class="container">
-      <h2 class="section-title" id="materiais-title">Materiais em destaque</h2>
-      <p class="section-sub">Seleção curada para idades de 3 a 10 anos. Imprima, jogue e aprenda!</p>
-
-      <div class="grid">
-        <!-- Card 1 -->
-        <article class="card col-4">
-          <div class="card-media">
-            <img src="assets/material-flashcards-animals.jpg" alt="Flashcards de animais" />
-          </div>
-          <div class="card-body">
-            <span class="badge">Flashcards</span>
-            <h3>Animals & Sounds</h3>
-            <p>Associe imagem e som para ampliar vocabulário e pronúncia.</p>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-primary">Baixar</button>
-            <button class="btn btn-secondary">Pré-visualizar</button>
-          </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="card col-4">
-          <div class="card-media">
-            <img src="assets/material-bingo-colors.jpg" alt="Jogo de Bingo de cores" />
-          </div>
-          <div class="card-body">
-            <span class="badge gold">Jogo</span>
-            <h3>Color Bingo</h3>
-            <p>Aprenda cores e atenção visual com um bingo super divertido.</p>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-primary">Baixar</button>
-            <button class="btn btn-secondary">Pré-visualizar</button>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="card col-4">
-          <div class="card-media">
-            <img src="assets/material-storytime.jpg" alt="Storytime com figuras" />
-          </div>
-          <div class="card-body">
-            <span class="badge">Storytime</span>
-            <h3>My Magic Day</h3>
-            <p>História curta com atividades de compreensão e vocabulário.</p>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-primary">Baixar</button>
-            <button class="btn btn-secondary">Pré-visualizar</button>
-          </div>
-        </article>
-      </div>
-
-      <div class="mt-24" style="display:flex; justify-content:center;">
-        <a href="#" class="btn btn-secondary">Ver catálogo completo</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMO FUNCIONA -->
-  <section id="como-funciona" aria-labelledby="como-title" style="background: var(--bg-50);">
-    <div class="container">
-      <h2 class="section-title" id="como-title">Como funciona</h2>
-      <p class="section-sub">Materiais pedagógicos prontos, com cores e personagens do universo PlayUp.</p>
-
-      <div class="grid">
-        <div class="col-4">
-          <div class="feature">
-            <span class="icon">1</span>
-            <h3 class="text-brand" style="margin:6px 0 0;">Escolha o pacote</h3>
-            <p class="mt-8">Filtre por idade, tema e habilidade (vocabulário, listening, leitura).</p>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="feature">
-            <span class="icon">2</span>
-            <h3 class="text-brand" style="margin:6px 0 0;">Baixe e imprima</h3>
-            <p class="mt-8">Formatos otimizados para A4 e tablets, com instruções para professores e pais.</p>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="feature">
-            <span class="icon">3</span>
-            <h3 class="text-brand" style="margin:6px 0 0;">Aprenda brincando</h3>
-            <p class="mt-8">Jogos, flashcards e histórias que usam as cores e o estilo do seu logo.</p>
+  <main>
+    <section class="hero-section">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Aprenda Inglês de Forma Divertida!</h1>
+          <p>Atividades e recursos de Inglês para crianças.</p>
+          <div class="hero-ctas">
+            <a href="#materiais" class="btn btn-primary">Ver Materiais</a>
+            <a href="#comunidade" class="btn btn-outline">Juntar-se à Comunidade</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- DEPOIMENTOS -->
-  <section id="depoimentos" aria-labelledby="depo-title">
-    <div class="container">
-      <h2 class="section-title" id="depo-title">O que dizem</h2>
-      <p class="section-sub">Educadores e famílias que já brincam e aprendem com a PlayUp.</p>
-      <div class="grid">
-        <div class="col-6">
-          <blockquote class="quote">
-            <div class="stars">★★★★★</div>
-            <p class="mt-8">“Os flashcards têm um visual incrível e as crianças se conectam na hora. As cores vibrantes fazem toda a diferença!”</p>
-            <cite class="mt-8" style="display:block; color: var(--text-600);">— Prof. Ana, São Paulo</cite>
-          </blockquote>
-        </div>
-        <div class="col-6">
-          <blockquote class="quote">
-            <div class="stars">★★★★★</div>
-            <p class="mt-8">“Material pronto e bonito. A estética do logo aparece em tudo, deixando a aula mais lúdica e organizada.”</p>
-            <cite class="mt-8" style="display:block; color: var(--text-600);">— Marcos, pai do Lucas (6)</cite>
-          </blockquote>
+    <section id="materiais" class="section">
+      <div class="container">
+        <h2>Nossos Materiais</h2>
+        <p class="section-lead">Atividades e recursos de Inglês para crianças separado por categorias. Selecione a categoria e veja o que temos disponível até o momento.</p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Flashcards</h3>
+            <p>Imagens vibrantes e palavras-chave para memorização rápida.</p>
+            <a href="#" class="card-link">Saiba mais →</a>
+          </article>
+          <article class="card">
+            <h3>Classroom</h3>
+            <p>Atividades lúdicas que reforçam vocabulário e pronúncia.</p>
+            <a href="#" class="card-link">Saiba mais →</a>
+          </article>
+          <article class="card">
+            <h3>Banners</h3>
+            <p>Canções temáticas que tornam o aprendizado natural e divertido.</p>
+            <a href="#" class="card-link">Saiba mais →</a>
+            </article>
+          <article class="card">
+            <h3>Bilingual Kids</h3>
+            <p>Canções temáticas que tornam o aprendizado natural e divertido.</p>
+            <a href="#" class="card-link">Saiba mais →</a>
+            </article>
+          <article class="card">
+            <h3>Games</h3>
+            <p>Canções temáticas que tornam o aprendizado natural e divertido.</p>
+            <a href="#" class="card-link">Saiba mais →</a>
+            </article>
+          <article class="card">
+            <h3>Songs</h3>
+            <p>Canções temáticas que tornam o aprendizado natural e divertido.</p>
+            <a href="#" class="card-link">Saiba mais →</a>
+            </article>
+          <article class="card">
+            <h3>Activities</h3>
+            <p>Canções temáticas que tornam o aprendizado natural e divertido.</p>
+            <a href="#" class="card-link">Saiba mais →</a>
+</article>
+          <article class="card">
+            <h3>Recursos GRÁTIS</h3>
+            <p>Canções temáticas que tornam o aprendizado natural e divertido.</p>
+            <a href="#" class="card-link">Saiba mais →</a>
+
+            
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- NEWSLETTER -->
-  <section aria-labelledby="news-title">
-    <div class="container">
-      <div class="newsletter">
-        <h2 class="section-title text-invert" id="news-title" style="color: #fff;">Receba materiais gratuitos</h2>
-        <p style="margin: 0; color: rgba(255,255,255,0.95);">Assine e receba novidades e atividades semanais no seu e-mail.</p>
-        <form class="mt-12" action="#" method="post">
-          <label class="sr-only" for="email">Seu e-mail</label>
-          <input class="input" id="email" type="email" placeholder="Seu e-mail" required />
-          <button class="btn btn-accent" type="submit">Assinar</button>
+    <section id="diferenciais" class="section section-highlight">
+      <div class="container">
+        <h2>Nossos Diferenciais</h2>
+        <ul class="features">
+          <li><strong>Design colorido:</strong> paleta do logo aplicada em todo o site.</li>
+          <li><strong>Pronto para impressão:</strong> materiais em alta qualidade.</li>
+          <li><strong>Metodologia ativa:</strong> atividades centradas na criança.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="comunidade" class="section">
+      <div class="container">
+        <h2>Join US</h2>
+        <p class="section-lead">Seja membro da nossa comunidade de Teachers e receba GRÁTIS um bônus exclusivo por mês!</p>
+
+        <form class="join-form" novalidate>
+          <div class="form-row">
+            <label for="join-email">Seu e-mail</label>
+            <input id="join-email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="seuemail@exemplo.com">
+          </div>
+
+          <!-- Honeypot anti-spam (não preencha) -->
+          <div class="hp-row" aria-hidden="true">
+            <label for="join-company">Empresa</label>
+            <input id="join-company" name="company" type="text" tabindex="-1" autocomplete="off" placeholder="Não preencher">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Quero participar</button>
+          <p class="form-message" role="status" aria-live="polite"></p>
         </form>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- RODAPÉ -->
-  <footer id="contato">
-    <div class="footer-inner">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <img class="logo" src="assets/logo-playup.png" alt="Logo PlayUp English" style="width:36px; height:36px;" />
-        <strong style="font-family: var(--font-title); font-weight:800;">PlayUp English</strong>
+    <section id="contato" class="section">
+      <div class="container">
+        <h2>Contato</h2>
+        <p>Dúvidas ou parcerias? Fale com a gente: <a href="mailto:contato@playupenglish.com">contato@playupenglish.com</a></p>
       </div>
-      <div class="mini">
-        Atividades e recursos de Inglês para crianças!
-      </div>
-      <div class="mini">
-        © <span id="year"></span> PlayUp English. Todos os direitos reservados.
-      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> PlayUp English. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <script>
-    // Ano automático
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
-</html>
-
+</html> 
